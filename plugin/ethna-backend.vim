@@ -150,9 +150,8 @@ function! s:InsertTdGatewayDir()
     endif
 endfunction
 
-command! -nargs=0 GenericDao   call <SID>GenericDao()
-command! -nargs=0 View     call <SID>View()
-command! -nargs=0 TdGateway call <SID>TdGateway()
+command! -nargs=0 GTG   call <SID>GenericDao()
+command! -nargs=0 GTT call <SID>TdGateway()
 
 cnoremap <C-X><C-G><C-D> <C-\>e<SID>InsertGenericDaoDir()<CR>
 cnoremap <C-X><C-T><C-G> <C-\>e<SID>InsertTdGatewayDir()<CR>
