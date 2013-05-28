@@ -42,7 +42,7 @@ function! s:GetTdGatewayPathFromGenericDao()
     let l:dir   = substitute(s:FullPath(), '^\(.*\)/GenericDao/\(\(.\{-\}/\)*\)\(.\{-\}\.php\?\)$', '\2', '')
     let l:fname = substitute(s:FullPath(), '^\(.*\)/GenericDao/\(\(.\{-\}/\)*\)\(.\{-\}\.php\?\)$', '\4', '')
 
-    let a = l:root. '/TdGateway/'. tolower(l:dir). substitute(tolower(l:fname), '.php\?', '.php', '')
+    let a = l:root. '/TdGateway/'. substitute(substitute(l:dir, '.*', '\u\0', ''), '/\(.\)', '/\u\1', 'g'). substitute(l:fname, '\(\zs\)\(.*\)\(.php\)', '\u\1\2.php', '')
     return a
 endfunction
 
@@ -66,7 +66,8 @@ function! s:GetTdGatewayDirFromGenericDao()
     let l:root  = substitute(s:FullPath(), '^\(.*\)/GenericDao/\(\(.\{-\}/\)*\)\(.\{-\}\.php\?\)$', '\1', '')
     let l:dir   = substitute(s:FullPath(), '^\(.*\)/GenericDao/\(\(.\{-\}/\)*\)\(.\{-\}\.php\?\)$', '\2', '')
 
-    let a = l:root. '/TdGateway/'. tolower(l:dir)
+    let a = l:root. '/TdGateway/'. substitute(substitute(l:dir, '.*', '\u\0', ''), '/\(.\)', '/\u\1', 'g')
+    return a
     return a
 endfunction
 
@@ -74,7 +75,7 @@ function! s:GetTdGatewayDirFromTdGateway()
     let l:root  = substitute(s:FullPath(), '^\(.*\)/TdGateway/\(\(.\{-\}/\)*\)\(.\{-\}\.php\)$', '\1', '')
     let l:dir   = substitute(s:FullPath(), '^\(.*\)/TdGateway/\(\(.\{-\}/\)*\)\(.\{-\}\.php\)$', '\2', '')
 
-    let a = l:root. '/TdGateway/'. tolower(l:dir)
+    let a = l:root. '/TdGateway/'. substitute(substitute(l:dir, '.*', '\u\0', ''), '/\(.\)', '/\u\1', 'g')
     return a
 endfunction
 
