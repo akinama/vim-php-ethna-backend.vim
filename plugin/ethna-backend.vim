@@ -29,7 +29,7 @@ function! s:IsTdGateway()
 endfunction
 
 function! s:IsModule()
-    if (matchstr(s:FullPath(), '/TdGateway/\(.\{-\}/\)\{-\}.\{-\}\.php$') != '')
+    if (matchstr(s:FullPath(), '/Module/\(.\{-\}/\)\{-\}.\{-\}\.php$') != '')
         return 1
     else
         return 0
@@ -141,7 +141,7 @@ function! s:GetTdGatewayDirFromTdGateway()
     return a
 endfunction
 
-function! s:GetTdGatewayDirFromTdGateway()
+function! s:GetTdGatewayDirFromModule()
     let l:root  = substitute(s:FullPath(), '^\(.*\)/Module/\(\(.\{-\}/\)*\)\(.\{-\}\.php\)$', '\1', '')
     let l:dir   = substitute(s:FullPath(), '^\(.*\)/Module/\(\(.\{-\}/\)*\)\(.\{-\}\.php\)$', '\2', '')
 
